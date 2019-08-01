@@ -6,7 +6,7 @@
 #    By: vrabaib <vrabaib@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/24 13:29:59 by vrabaib           #+#    #+#              #
-#    Updated: 2019/07/27 02:32:39 by vrabaib          ###   ########.fr        #
+#    Updated: 2019/07/27 21:32:45 by vrabaib          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ class Adaline():
         self.weights = [random.random() for params in range(len(list(self.data)) - 1)]
 
         for i in range(100):
-            output = self.net_input(self.data.values)
+            output = [self.linear_activation(samples) for samples in self.net_input(self.data.values)]
             errors = vector_subtract(cmp_data.values, output)
             self.weights += dot_product(self.data.values, errors)
             self.bias += sum(errors)

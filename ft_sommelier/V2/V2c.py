@@ -6,7 +6,7 @@
 #    By: vrabaib <vrabaib@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/22 13:18:52 by vrabaib           #+#    #+#              #
-#    Updated: 2019/07/24 12:46:11 by vrabaib          ###   ########.fr        #
+#    Updated: 2019/08/01 12:44:31 by vrabaib          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ def plot_performance(performance, wine_data, good_thresh, bad_thresh, epoch=-1, 
         return [itr[index] for itr in performance]
 
     def y_val_decision_boundary(x, weight1, weight2, bias):
-        return (-weight1 / weight2) * x + (-bias / weight2)
+        return (-weight2 / weight1) * x + (-bias / weight1)
 
     x_axis, y_axis, compare = 'alcohol', 'pH', 'quality'
     epo_vs_error_title = 'Error as a function of epoch'
@@ -54,14 +54,13 @@ def plot_performance(performance, wine_data, good_thresh, bad_thresh, epoch=-1, 
     b = bias[epoch_choice - 1]
     weight1 = weights[epoch_choice - 1][0]
     weight2 = weights[epoch_choice - 1][1]
-    
 
     bad_wine = (wine_data[wine_data[compare] <= bad_thresh])[[x_axis, y_axis]]
     good_wine = (wine_data[wine_data[compare] >= good_thresh])[[x_axis, y_axis]]
     
     #Hard coded
-    x_decision_boundary = [i for i in range(7, 14)]
-    y_decision_boundary = [y_val_decision_boundary(i, weight2, weight1, b) for i in range(7, 14)]
+    x_decision_boundary = [i for i in range(-1, 1)]
+    y_decision_boundary = [y_val_decision_boundary(i, weight2, weight1, b) for i in range(-1, 1)]
     #End
     
     decision_boundary = plot[1].plot(x_decision_boundary, y_decision_boundary, 'b--')
@@ -78,4 +77,4 @@ def plot_performance(performance, wine_data, good_thresh, bad_thresh, epoch=-1, 
 
     plt.show()
 
-#plot_performance(perceptron_performance, updated_data, 8, 3, 300, True)
+#plot_performance(perceptron_performance, updated_data, 8, 3, 15000, True)

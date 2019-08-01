@@ -6,7 +6,7 @@
 #    By: vrabaib <vrabaib@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/21 18:39:40 by vrabaib           #+#    #+#              #
-#    Updated: 2019/07/25 17:35:19 by vrabaib          ###   ########.fr        #
+#    Updated: 2019/07/30 14:11:45 by vrabaib          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ def rosenblatt_qlty_column(wine_data, good_threshold, bad_threshold):
     rosenblatt_quality = new_data[threshold_filter]
     return rosenblatt_quality
 
-updated_data = rosenblatt_qlty_column("../winequality-red.csv", 8, 3)
-print(updated_data[['pH', 'alcohol', 'quality', 'Good']])
+# updated_data = rosenblatt_qlty_column("../winequality-red.csv", 8, 3)
+# print(updated_data[['pH', 'alcohol', 'quality', 'Good']])
 
 def infinity():
     index = 0
@@ -56,7 +56,7 @@ class Perceptron():
             errors = 0
             for x, y_true in zip(self.data.values, y_cmp):
                 error = y_true - self.predict(x)
-                print(x, y_true)
+                #print(x, y_true)
                 if error != 0:
                     self.weights += error * x * self.learning_rate
                     self.bias += error * self.learning_rate
@@ -66,5 +66,5 @@ class Perceptron():
                 break
         return self.performance
 
-test = Perceptron(updated_data[['pH', 'alcohol']], 0.9, 0)
-print(test.rosenblatt_learning(updated_data['Good']))
+# test = Perceptron(updated_data[['pH', 'alcohol']], 0.9, 0)
+# print(test.rosenblatt_learning(updated_data['Good']))
