@@ -1,4 +1,0 @@
-Perceptrons are useful for linearly separable datasets.  
-The following plots (and vice-versa), for good_threshold >= 8 and bad_threshold <= 3, show this trend:
-    1.  pH vs alcohol
-    2.  citric acid vs density
